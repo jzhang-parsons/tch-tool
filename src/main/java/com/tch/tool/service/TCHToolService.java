@@ -24,7 +24,7 @@ public class TCHToolService {
 				String[] s = searchCriteria.split(",");
 	            switch(s.length){
 		            case 1: //By Zip code or State or City or Type or Bank Name
-		            	String search = s[0].strip().toLowerCase();
+		            	String search = s[0].trim().toLowerCase();
 		    	        for (Bank b : banks) {
 		    	        	if(b.getBankName().toLowerCase().contains(search) || b.getType().toLowerCase().contains(search)
 		    	        	   || b.getCity().toLowerCase().contains(search) || b.getState().toLowerCase().contains(search)
@@ -35,8 +35,8 @@ public class TCHToolService {
 		    	        }
 		                break;
 		            case 2: //By City & State
-		            	String city = s[0].strip();
-		            	String state = s[1].strip();
+		            	String city = s[0].trim();
+		            	String state = s[1].trim();
 		    	        for (Bank b : banks) {
 		    	        	if(b.getCity().equalsIgnoreCase(city) && b.getState().equalsIgnoreCase(state))
 		    	        	{

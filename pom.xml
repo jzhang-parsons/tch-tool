@@ -5,6 +5,13 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>TCHTool</name>
   <description>Bank search</description>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <java.version>1.8</java.version>
+  </properties>
   
   <dependencies>
 	  <dependency>
@@ -12,5 +19,43 @@
 	        <artifactId>commons-lang3</artifactId>
 	        <version>3.9</version>
 	  </dependency>
-  </dependencies>	
+  </dependencies>
+  
+  <build>
+    <plugins>
+	  <plugin>
+		  <groupId>org.apache.maven.plugins</groupId>
+		  <artifactId>maven-dependency-plugin</artifactId>
+		  <executions>
+		    <execution>
+		      <id>copy-dependencies</id>
+		      <phase>prepare-package</phase>
+		      <goals>
+		        <goal>copy-dependencies</goal>
+		      </goals>
+		      <configuration>
+		        <outputDirectory>${project.build.directory}/${project.build.finalName}.lib</outputDirectory>
+		      </configuration>
+		    </execution>
+		  </executions>
+	  </plugin>
+      <plugin>
+	       <groupId>org.apache.maven.plugins</groupId>
+	       <artifactId>maven-jar-plugin</artifactId>
+	       <version>3.2.0</version>
+	       <configuration>
+	     		<source>1.8</source>
+	     		<target>1.8</target>
+	     		<archive>
+	          <manifest>
+	            <addClasspath>true</addClasspath>
+	            <classpathPrefix>${project.build.finalName}.lib/</classpathPrefix>
+	            <mainClass>com.tch.tool.controller.TCHTool</mainClass>
+	          </manifest>
+	        </archive>
+	   	</configuration>
+      </plugin>
+    </plugins>
+  </build>
+ 
 </project>

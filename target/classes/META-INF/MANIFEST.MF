@@ -1,5 +1,6 @@
 Manifest-Version: 1.0
-Built-By: p0043777
-Build-Jdk: 13.0.1
+Build-Jdk-Spec: 13
+Class-Path: tch-tool-0.0.1-SNAPSHOT.lib/commons-lang3-3.9.jar
+Main-Class: com.tch.tool.controller.TCHTool
 Created-By: Maven Integration for Eclipse
 
