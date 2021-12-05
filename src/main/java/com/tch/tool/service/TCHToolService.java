@@ -15,7 +15,7 @@ public class TCHToolService {
 	public void findBanks(String searchCriteria) {
 		List<Bank> searchResult = new ArrayList<Bank>();
 
-		if(banks != null && !banks.isEmpty())
+		if(banks != null && !banks.isEmpty() && searchCriteria != null && !searchCriteria.isEmpty())
 		{
 			if(searchCriteria.equalsIgnoreCase("all"))
 			{
@@ -50,6 +50,7 @@ public class TCHToolService {
 		
 		if(!searchResult.isEmpty())
 		{
+			System.out.println("Total records: " + searchResult.size());
 	        for (Bank b : searchResult) {
 	            System.out.println(b);
 	        }
